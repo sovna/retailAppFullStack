@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/navigation_header_image"
+    tools:context="com.teksystems.app.tekkart.LoginActivity">
+
+    <Button
+        android:id="@+id/fetch_address_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/location_address_view"
+        android:layout_alignBottom="@+id/location_address_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ebf90f0f"
+        android:onClick="fetchAddressButtonHandler"
+        android:text="LOCATE ME"
+       android:shadowColor= "#ebf5f1f1"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/fetch_address_button"
+        android:layout_toRightOf="@+id/fetch_address_button" />
+
+    <ImageButton
+        android:id="@+id/user_profile_photo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/household_needs"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:background="#00000000"
+        android:elevation="5dp"
+        android:onClick="fetchProfile"
+        android:padding="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/location_address_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/beverages"
+        android:layout_width="109dp"
+        android:layout_height="98dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/fetch_address_button"
+        android:layout_marginTop="21dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="BEVERAGES"
+        android:background="#00000000"
+        android:onClick="fetchProduct"
+        android:cropToPadding="false"
+        android:src="@drawable/beverages" />
+
+    <TextView
+        android:id="@+id/textbeverages"
+        android:labelFor="@id/beverages"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextbrandedfood"
+        android:layout_alignRight="@+id/editTextbrandedfood"
+        android:layout_below="@+id/beverages"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="beverages"
+        android:textColor="#ebf5f1f1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/branded_food"
+        android:contentDescription="BRANDEDFOOD"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/beverages"
+        android:onClick="fetchProduct"
+        android:layout_marginTop="29dp"
+        android:background="#00000000"
+        android:src="@drawable/branded_food" />
+
+    <TextView
+        android:id="@+id/editTextbrandedfood"
+        android:labelFor="@id/branded_food"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/branded_food"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="branded food"
+        android:textColor="#ebf5f1f1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/baby_and_kids"
+        android:contentDescription="BABYANDKIDS"
+        android:onClick="fetchProduct"
+        android:layout_width="80dp"
+        android:layout_height="89dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/branded_food"
+        android:layout_marginTop="45dp"
+        android:background="#00000000"
+        android:src="@drawable/baby_and_kids" />
+
+    <TextView
+        android:id="@+id/editText4babyandkids"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/fruits_and_vegetables"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="baby and kids"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#ebf5f1f1" />
+
+    <ImageView
+        android:id="@+id/breakfast_and_diary"
+        android:contentDescription="BREAKFASTANDDIARY"
+        android:onClick="fetchProduct"
+        android:layout_width="100dp"
+        android:layout_height="98dp"
+        android:layout_above="@+id/branded_food"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:src="@drawable/breakfast_and_diary" />
+
+    <TextView
+        android:id="@+id/editTextbreakfastanddairy"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTexthouseholdneeds"
+        android:layout_alignBottom="@+id/editTexthouseholdneeds"
+        android:layout_alignLeft="@+id/breakfast_and_diary"
+        android:layout_alignStart="@+id/breakfast_and_diary"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="breakfast/diary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="#ebf5f1f1" />
+
+
+    <ImageView
+        android:id="@+id/foodgrains_oil_and_masala"
+        android:contentDescription="FOODGRAINSOILANDMASALA"
+        android:onClick="fetchProduct"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/editTextfoodgrainoil"
+        android:layout_alignLeft="@+id/editTextbreakfastanddairy"
+        android:layout_alignStart="@+id/editTextbreakfastanddairy"
+        android:background="#00000000"
+        android:src="@drawable/foodgrains_oil_and_masala" />
+
+    <TextView
+        android:id="@+id/editTextfoodgrainoil"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/foodgrains_oil_and_masala"
+        android:layout_alignRight="@+id/foodgrains_oil_and_masala"
+        android:layout_below="@+id/branded_food"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="Grain Oil Masala"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/fruits_and_vegetables"
+        android:contentDescription="FRUITSANDVEGETABLES"
+        android:onClick="fetchProduct"
+        android:layout_width="110dp"
+        android:layout_height="91dp"
+        android:layout_alignLeft="@+id/editTextfoodgrainoil"
+        android:layout_alignStart="@+id/editTextfoodgrainoil"
+        android:layout_alignTop="@+id/baby_and_kids"
+        android:background="#00000000"
+        android:src="@drawable/fruits_and_vegetables" />
+
+    <TextView
+        android:id="@+id/editTextfruitsVeg"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextpetcare"
+        android:layout_alignBottom="@+id/editTextpetcare"
+        android:layout_alignLeft="@+id/fruits_and_vegetables"
+        android:layout_alignStart="@+id/fruits_and_vegetables"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="Fruits and Vegetables"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+
+    <ImageView
+        android:id="@+id/household_needs"
+        android:contentDescription="HOUSEHOLDNEEDS"
+        android:onClick="fetchProduct"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_alignTop="@+id/breakfast_and_diary"
+        android:layout_toEndOf="@+id/editTextfruitsVeg"
+        android:layout_toRightOf="@+id/editTextfruitsVeg"
+        android:background="#00000000"
+        android:src="@drawable/household_needs" />
+
+    <TextView
+        android:id="@+id/editTexthouseholdneeds"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/household_needs"
+        android:layout_alignStart="@+id/household_needs"
+        android:layout_below="@+id/household_needs"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="household needs"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/noodles_sauces_and_instant_food"
+        android:contentDescription="NOODLESSAUCESANDINSTANTFOOD"
+        android:onClick="fetchProduct"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_above="@+id/editTextfoodgrainoil"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="7dp"
+        android:background="#00000000"
+        android:src="@drawable/noodles_sauces_and_instant_food" />
+
+    <TextView
+        android:id="@+id/editTextinstantfood"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextfoodgrainoil"
+        android:layout_alignBottom="@+id/editTextfoodgrainoil"
+        android:layout_alignLeft="@+id/noodles_sauces_and_instant_food"
+        android:layout_alignStart="@+id/noodles_sauces_and_instant_food"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="instant food"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/pet_care"
+        android:contentDescription="PETCARE"
+        android:onClick="fetchProduct"
+        android:layout_width="112dp"
+        android:layout_height="97dp"
+        android:layout_alignTop="@+id/fruits_and_vegetables"
+        android:layout_toEndOf="@+id/editTextfruitsVeg"
+        android:layout_toRightOf="@+id/editTextfruitsVeg"
+        android:background="#00000000"
+        android:src="@drawable/pet_care" />
+
+    <TextView
+        android:id="@+id/editTextpetcare"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTexthouseholdneeds"
+        android:layout_alignRight="@+id/editTexthouseholdneeds"
+        android:layout_below="@+id/baby_and_kids"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="pet care"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <ImageView
+        android:id="@+id/personal_care"
+        android:contentDescription="PERSONALCARE"
+        android:onClick="fetchProduct"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignEnd="@+id/baby_and_kids"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/baby_and_kids"
+        android:background="#00000000"
+        android:src="@drawable/personal_care" />
+
+    <TextView
+        android:id="@+id/editTextpersonalcare"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="27dp"
+        android:layout_toEndOf="@+id/branded_food"
+        android:layout_toRightOf="@+id/branded_food"
+        android:ems="10"
+        android:textColor="#ebf5f1f1"
+        android:inputType="textPersonName"
+        android:text="personal care"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+
+</RelativeLayout>
+
