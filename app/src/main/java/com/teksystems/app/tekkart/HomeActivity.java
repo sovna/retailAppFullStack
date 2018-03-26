@@ -398,7 +398,8 @@ public class HomeActivity extends AppCompatActivity {
         String category = view.getContentDescription().toString();
         //String category = productCategory.getText().toString();
         System.out.print(category+" "+productCategory.toString());
-        new ProductService().getproducts(HomeActivity.this,"601",category,getIntent().getStringExtra("userId"));
+        final Controller aController = (Controller) HomeActivity.this.getApplicationContext();
+        new ProductService().getproducts(HomeActivity.this,"601",category,aController.getUserId());
         //startActivity(intent);
     }
 }

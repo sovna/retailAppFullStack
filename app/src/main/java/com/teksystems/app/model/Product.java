@@ -20,12 +20,13 @@ public  class Product implements Serializable {
     //private String thumbnailPath;
     private float unitPrice;
     private String uom;
+    private String flag;
 
     public Product() {
     }
 
     public Product(Integer productId, Integer productCategoryId, Integer manufacturerId, Integer locationId, String productName,
-                   float unitPrice, String uom) {
+                   float unitPrice, String uom,String flag) {
         this.productId = productId;
         this.productCategoryId = productCategoryId;
         this.manufacturerId = manufacturerId;
@@ -34,6 +35,7 @@ public  class Product implements Serializable {
         // this.thumbnailPath = thumbnailPath;
         this.unitPrice = unitPrice;
         this.uom = uom;
+        this.flag = flag;
     }
 
     public Integer getProductId() {
@@ -90,5 +92,13 @@ public  class Product implements Serializable {
 
     public void setUom(String uom) {
         this.uom = uom;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

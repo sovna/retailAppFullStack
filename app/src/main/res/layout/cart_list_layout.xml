@@ -40,25 +40,12 @@
         android:textSize="16sp" />
 
     <ImageButton
-        android:id="@+id/add"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/secondLine"
-        android:layout_marginLeft="211dp"
-        android:layout_marginStart="211dp"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
-        android:labelFor="@id/firstLine"
-        android:src="@drawable/plus" />
-
-    <ImageButton
         android:id="@+id/wish"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignLeft="@+id/add"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/add"
-        android:layout_marginTop="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:contentDescription="WISH"
         android:src="@drawable/wish" />
 

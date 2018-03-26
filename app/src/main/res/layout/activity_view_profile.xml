@@ -36,14 +36,13 @@
         android:elevation="4dp"
         android:paddingBottom="24dp">
 
-        <ImageView
-            android:id="@+id/drop_down_option_menu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+        <TextView
+            android:id="@+id/login_logout"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_action_overflow" />
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/user_profile_name"
@@ -83,6 +82,7 @@ android:orientation="vertical">
         android:layout_below="@+id/header_cover_image"
         android:background="#fff"
         android:elevation="4dp"
+        android:onClick="fetchOrders"
         android:padding="20dp">
 
         <TextView
@@ -114,7 +114,8 @@ android:orientation="vertical">
         android:layout_below="@+id/header_cover_image"
         android:background="#fff"
         android:elevation="4dp"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:onClick="fetchWishList">
 
         <TextView
             android:layout_width="100dp"

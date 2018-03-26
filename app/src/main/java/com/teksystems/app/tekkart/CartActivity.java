@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.teksystems.app.model.CartDisplay;
 import com.teksystems.app.model.Category;
+import com.teksystems.app.model.Product;
 import com.teksystems.app.model.ProductCart;
 import com.teksystems.app.model.Transaction;
 import com.teksystems.app.tekkart.R;
@@ -23,6 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -34,27 +38,25 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        final Controller aController = (Controller) CartActivity.this.getApplicationContext();
         String userId = getIntent().getStringExtra("userId");
-        ProductCart productCart = (ProductCart) getIntent().getSerializableExtra("cart");
-        TextView textView = findViewById(R.id.productid);
-        textView.setText(String.valueOf(productCart.getProductId()));
+        Transaction transaction = (Transaction) getIntent().getSerializableExtra("cart");
+        ListView listView = findViewById(R.id.cartlist);
+        listView.setAdapter(new CustomCartArrayAdapter(CartActivity.this,transaction.getProductCartList()));
+
     }
     public void placeOrder(View view){
         String userId = getIntent().getStringExtra("userId");
-        ProductCart productCart = (ProductCart) getIntent().getSerializableExtra("cart");
+        Transaction transaction = (Transaction) getIntent().getSerializableExtra("cart");
 
-        Transaction transaction = new Transaction();
-        List<ProductCart> productCartList = new ArrayList<>();
-        productCartList.add(productCart);
-        transaction.setProductCartList(productCartList);
-        transaction.setUserId(Integer.valueOf(userId));
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonTxStr = new String();
         try {
-             jsonTxStr = objectMapper.writeValueAsString(transaction);
+            jsonTxStr = objectMapper.writeValueAsString(transaction);
         }catch (IOException e){
             e.printStackTrace();
         }
+
         StringEntity jsonEntity = null;
         AsyncHttpClient client = new AsyncHttpClient();
 

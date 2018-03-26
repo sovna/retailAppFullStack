@@ -106,20 +106,29 @@
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
         android:textColor="#f7f5f5"
         android:textColorHint="#f7f5f5"
-        android:backgroundTint="#f7f5f5"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="369dp" />
+        android:backgroundTint="#f7f5f5"/>
 
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
+        android:layout_alignStart="@+id/password"
+        android:layout_marginBottom="27dp"
         android:onClick="buttonOnClick"
-        android:text="REGISTER"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="503dp" />
+        android:text="REGISTER" />
+
+    <Button
+        android:id="@+id/guestchoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/register"
+        android:layout_toRightOf="@+id/register"
+        android:onClick="buttonOnClick"
+        android:text="Continue as Guest" />
 
 </RelativeLayout>

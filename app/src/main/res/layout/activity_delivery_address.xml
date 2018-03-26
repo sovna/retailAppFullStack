@@ -26,12 +26,10 @@
             android:layout_alignParentTop="true"
             android:background="#00000000"
             android:clickable="true"
-            android:text="Wing 2, Block C, Cyber Gateway, Hitec City
-    Hyderabad
-    123456789"
+            android:text="SignUp to have doorstep deliveries"
             android:textColor="#fff"
             android:textSize="20dp"
-            android:id="@+id/textView2" />
+            android:id="@+id/address_text" />
 
         <RelativeLayout
             android:id="@+id/add1b_layout"
@@ -39,43 +37,16 @@
             android:layout_height="100dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/address"
             android:layout_marginTop="17dp"
             android:background="#00000000"
             android:elevation="4dp"
             android:padding="20dp">
 
-            <Button
-                android:id="@+id/buttonremove"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="26dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="11dp"
-                android:background="#eb716c6c"
-                android:text="REMOVE"
-                android:textColor="#fff" />
-
-            <Button
-                android:id="@+id/buttonedit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="21dp"
-                android:layout_marginRight="21dp"
-                android:background="#eb716c6c"
-                android:text="EDIT"
-                android:textColor="#fff" />
-
         </RelativeLayout>
     </RelativeLayout>
         <RelativeLayout
-        android:id="@+id/add_layout"
+        android:id="@+id/edit_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -92,8 +63,9 @@
             android:layout_centerHorizontal="true"
             android:background="#ebca0707"
             android:clickable="true"
-            android:text="ADD"
-            android:textSize="20dp" />
+            android:text="EDIT"
+            android:textSize="20dp"
+            android:id="@+id/edit"/>
 
 
     </RelativeLayout>

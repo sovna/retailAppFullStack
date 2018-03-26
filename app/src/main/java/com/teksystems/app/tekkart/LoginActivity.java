@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.teksystems.app.service.CustomerService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,8 +69,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 String message = username.getText().toString();
                 try {
-
-                    intent.putExtra("userId", response.get("User ID").toString());
+                    final Controller aController = (Controller) LoginActivity.this.getApplicationContext();
+                    aController.setUserId(response.get("User ID").toString());
+                    if(aController.getUserId() != null && aController.getCustomer().getUserId() == null) {
+                        new CustomerService().getCustomers(LoginActivity.this, aController.getUserId());
+                    }
                 }catch (JSONException e){
                     e.printStackTrace();
                 }

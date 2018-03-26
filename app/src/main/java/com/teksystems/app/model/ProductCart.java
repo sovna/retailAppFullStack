@@ -11,6 +11,13 @@ public class ProductCart implements Serializable{
     Integer productId;
     int quantity = 0;
     double orderAmount;
+    Integer productCategoryId;
+    Integer manufacturerId;
+    Integer locationId;
+    String productUom;
+    String transactionType;
+
+
 
     public Integer getOrderLine() {
         return orderLine;
@@ -42,5 +49,45 @@ public class ProductCart implements Serializable{
 
     public void setOrderAmount(double rateAmount) {
         this.orderAmount = this.quantity*rateAmount;
+    }
+
+    public Integer getProductCategoryId() {
+        return productCategoryId;
+    }
+
+    public void setProductCategoryId(Integer productCategoryId) {
+        this.productCategoryId = productCategoryId;
+    }
+
+    public Integer getManufacturerId() {
+        return manufacturerId;
+    }
+
+    public void setManufacturerId(Integer manufacturerId) {
+        this.manufacturerId = manufacturerId;
+    }
+
+    public Integer getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
+    }
+
+    public String getProductUom() {
+        return productUom;
+    }
+
+    public void setProductUom(String productUom) {
+        this.productUom = productUom;
+    }
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
     }
 }
