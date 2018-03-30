@@ -56,18 +56,14 @@ public class ViewProfileActivity extends AppCompatActivity {
 
     public void fetchOrders(View v) {
         RelativeLayout orders = (RelativeLayout) v;
-        final Controller aController = (Controller) ViewProfileActivity.this.getApplicationContext();
-        new OrderService().getOrders(getBaseContext(),aController.getUserId());
-        Intent intent = new Intent(getBaseContext(), OrderActivity.class);
-        startActivity(intent);
+        final Controller aController = (Controller) this.getApplicationContext();
+        new OrderService().fetchOrders(this,aController.getUserId());
     }
 
     public void fetchWishList(View v) {
         RelativeLayout orders = (RelativeLayout) v;
         final Controller aController = (Controller) ViewProfileActivity.this.getApplicationContext();
-        new WishListService().getWishList(getBaseContext(),aController.getUserId());
-        Intent intent = new Intent(getBaseContext(), WishListActivity.class);
-        startActivity(intent);
+        new WishListService().getWishList(this,aController.getUserId());
     }
 
     public void fetchDeliveryAddress(View v) {

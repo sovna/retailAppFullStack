@@ -5,7 +5,9 @@ package com.teksystems.app.tekkart;
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Application;
 
@@ -23,6 +25,33 @@ public class Controller extends Application{
      Customer customer = new Customer();
      List<Order> orders =new ArrayList<>();
      List<WishList> wishLists = new ArrayList<>();
+     String productCategory;
+     List<Product> productCategoryList = new ArrayList<>();
+     Map<String,List<Product>> CategoryProductList = new HashMap();
+
+    public List<Product> getProductCategoryList() {
+        return productCategoryList;
+    }
+
+    public void setProductCategoryList(List<Product> productCategoryList) {
+        this.productCategoryList = productCategoryList;
+    }
+
+    public Map<String, List<Product>> getCategoryProductList() {
+        return CategoryProductList;
+    }
+
+    public void setCategoryProductList(Map<String, List<Product>> categoryProductList) {
+        CategoryProductList = categoryProductList;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
 
     public List<WishList> getWishLists() {
         return wishLists;

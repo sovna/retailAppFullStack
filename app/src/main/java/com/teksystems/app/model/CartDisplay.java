@@ -10,7 +10,7 @@ public class CartDisplay implements Serializable {
 
     private String productName;
     int quantity = 0;
-
+    public CartDisplay(){}
     public CartDisplay(String productName, int quantity) {
         this.productName = productName;
         this.quantity = quantity;

@@ -31,16 +31,12 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        Intent intent = getIntent();
-        Category category = (Category) intent.getSerializableExtra("PRODUCTCATEGORY");
-        List<Product> list = getObjectFromString(intent);
-
-
+        final Controller aController = (Controller) ProductActivity.this.getApplicationContext();
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.categoryname);
-        textView.setText("Category: "+category.getKey());
+        textView.setText("Category: "+aController.getProductCategory());
         ListView listView = findViewById(R.id.productlist);
-        listView.setAdapter(new CustomArrayAdapter(ProductActivity.this,list));
+        listView.setAdapter(new CustomArrayAdapter(ProductActivity.this,aController.getProductCategoryList()));
 
 
     }
@@ -56,18 +52,4 @@ public class ProductActivity extends AppCompatActivity {
      startActivity(intent);
  }
 
- public List<Product> getObjectFromString(Intent intent){
-     String productjsonstr = intent.getStringExtra("PRODUCT");
-     Product[] productList= new Product[0];
-     try {
-         ObjectMapper objectMapper = new ObjectMapper();
-         productList = objectMapper.readValue(productjsonstr, Product[].class);
-     } catch (IOException e) {
-         e.printStackTrace();
-     }
-     List<Product> list = new ArrayList<Product>();
-     list = Arrays.asList(productList);
-     System.out.println(list);
-     return list;
- }
 }

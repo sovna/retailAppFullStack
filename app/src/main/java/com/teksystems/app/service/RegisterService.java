@@ -9,6 +9,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.teksystems.app.model.Customer;
 import com.teksystems.app.tekkart.Controller;
+import com.teksystems.app.tekkart.LoginActivity;
 import com.teksystems.app.tekkart.RegisterActivity;
 import com.teksystems.app.tekkart.ViewProfileActivity;
 
@@ -44,7 +45,7 @@ public class RegisterService {
             jsonParams.put("pwd", pass);
             jsonParams.put("customerName", customer.getCustomerName());
             jsonParams.put("customerAddress", customer.getCustomerAddress());
-            jsonParams.put("customerContact", customer.getCustomerContact());
+            jsonParams.put("contactNo", customer.getCustomerContact());
             jsonParams.put("cityId", customer.getCityId());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -56,7 +57,7 @@ public class RegisterService {
         }
 
 
-        client.post(context, ": http://ec2-52-14-221-80.us-east-2.compute.amazonaws.com:8080/TekShopping/TekShop/signup", jsonEntity, "application/json", new JsonHttpResponseHandler() {
+        client.post(context, "http://ec2-52-14-221-80.us-east-2.compute.amazonaws.com:8080/TekShopping/TekShop/signup", jsonEntity, "application/json", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -64,8 +65,11 @@ public class RegisterService {
                 Intent intent = new Intent(context, ViewProfileActivity.class);
                 try {
                     final Controller aController = (Controller) context.getApplicationContext();
-                    aController.setCustomer(new ObjectMapper().readValue(response.toString(), Customer.class));
-                } catch (IOException e) {
+                    aController.setUserId(response.get("User ID").toString());
+                    if(aController.getUserId() != null && aController.getCustomer().getUserId() == null) {
+                        new CustomerService().getCustomers(context, aController.getUserId());
+                    }
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 context.startActivity(intent);

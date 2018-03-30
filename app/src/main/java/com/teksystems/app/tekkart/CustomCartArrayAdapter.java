@@ -72,15 +72,8 @@ public class CustomCartArrayAdapter  extends ArrayAdapter{
                     wishList.setProductCategoryId(productCart.getProductCategoryId());
                     wishList.setManufacturerId(productCart.getManufacturerId());
                     wishList.setLocationId(productCart.getLocationId());
-                    new WishListService().addToWishList(wishList);
-                    Transaction transaction = new Transaction();
-                    transaction.setProductCartList(aController.getCart());
-                    transaction.setUserId(Integer.valueOf(aController.getUserId()));
-                    Intent intent = new Intent(getContext(), CartActivity.class);
-                    intent.putExtra("userId",aController.getUserId());
-                    intent.putExtra("cart",transaction);
-                    getContext().startActivity(intent);
-                }
+                    aController.getWishLists().add(wishList);
+                    }
             });
 
             // set the name to the text;

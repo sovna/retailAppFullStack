@@ -8,21 +8,38 @@ import java.util.Date;
 
 public class WishList {
 
-    Integer wishListId;
+    Integer wishlistId;
+    String productName;
     Integer productId;
     Integer userId;
     Integer productCategoryId;
     Integer manufacturerId;
     Integer locationId;
-    String wishListDate;
+    String wishlistDate;
     Date LastUpdatedDate;
 
+    public Integer getWishlistId() {
+        return wishlistId;
+    }
+
+    public void setWishlistId(Integer wishlistId) {
+        this.wishlistId = wishlistId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public Integer getWishListId() {
-        return wishListId;
+        return wishlistId;
     }
 
     public void setWishListId(Integer wishListId) {
-        this.wishListId = wishListId;
+        this.wishlistId = wishListId;
     }
 
     public Integer getProductId() {
@@ -65,12 +82,12 @@ public class WishList {
         this.locationId = locationId;
     }
 
-    public String getWishListDate() {
-        return wishListDate;
+    public String getWishlistDate() {
+        return wishlistDate;
     }
 
-    public void setWishListDate(String wishListDate) {
-        this.wishListDate = wishListDate;
+    public void setWishlistDate(String wishListDate) {
+        this.wishlistDate = wishListDate;
     }
 
     public Date getLastUpdatedDate() {

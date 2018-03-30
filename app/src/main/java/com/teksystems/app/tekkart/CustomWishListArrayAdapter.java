@@ -14,8 +14,10 @@ import com.teksystems.app.model.CartDisplay;
 import com.teksystems.app.model.Order;
 import com.teksystems.app.model.Product;
 import com.teksystems.app.model.ProductCart;
+import com.teksystems.app.model.ProductName;
 import com.teksystems.app.model.Transaction;
 import com.teksystems.app.model.WishList;
+import com.teksystems.app.service.ProductService;
 import com.teksystems.app.service.WishListService;
 
 import java.util.List;
@@ -43,6 +45,7 @@ public class CustomWishListArrayAdapter  extends ArrayAdapter{
                 convertView = inflater.inflate(R.layout.wish_list_layout,parent,false);
                 holder = new ViewHolder();
                 holder.tv =(TextView) convertView.findViewById(R.id.firstLine);
+                holder.add = (ImageButton) convertView.findViewById(R.id.add);
                 convertView.setTag(holder);
             }
             else
@@ -50,13 +53,42 @@ public class CustomWishListArrayAdapter  extends ArrayAdapter{
                 holder = (ViewHolder)convertView.getTag();
             }
             WishList in = (WishList) aController.getWishList(position);
-            String productName = "Product";
-           /* for(Product product :aController.getProducts()) {
-                *//*if(product.getProductId().equals(in.getProductId())) {
-                    productName = product.getProductName();
-                }*//*
-            }*/
-            holder.tv.setText(in==null?"P1":in.getProductId().toString()/*productName*/);
+            String productNamestr = "Product";
+for(ProductName productName : ProductName.values()){
+    if(productName.getKey()==in.getProductId().intValue()){
+        productNamestr = productName.getValue();
+    }
+}
+
+            holder.tv.setText(in==null?"P1":productNamestr);
+            holder.add.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    WishList productWish = aController.getWishList(position);
+                    Product product = null;
+                    for (Product productInList :aController.getProducts()){
+                        if(productWish.getProductId().equals(productInList.getProductId())){
+                            product = productInList;
+                        }
+                    }
+                    if(product != null) {
+                        ProductCart productCart = new ProductCart();
+                        productCart.setOrderLine(new Random().nextInt());
+                        productCart.setQuantity(productCart.getQuantity() + 1);
+                        productCart.setProductId(product.getProductId());
+                        productCart.setOrderAmount(product.getUnitPrice());
+                        productCart.setProductCategoryId(product.getProductCategoryId());
+                        productCart.setLocationId(product.getLocationId());
+                        productCart.setManufacturerId(product.getManufacturerId());
+                        productCart.setProductUom(product.getUom());
+                        productCart.setTransactionType("OO");
+                        aController.getCart().add(productCart);
+                    }
+
+
+                }
+
+            });
+
             return convertView;
 
         }
@@ -64,6 +96,7 @@ public class CustomWishListArrayAdapter  extends ArrayAdapter{
         static class ViewHolder
         {
             TextView tv;
+            ImageButton add;
 
         }
     }

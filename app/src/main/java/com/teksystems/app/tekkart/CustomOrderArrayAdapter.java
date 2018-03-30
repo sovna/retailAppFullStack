@@ -14,8 +14,10 @@ import com.teksystems.app.model.CartDisplay;
 import com.teksystems.app.model.Order;
 import com.teksystems.app.model.Product;
 import com.teksystems.app.model.ProductCart;
+import com.teksystems.app.model.ProductName;
 import com.teksystems.app.model.Transaction;
 import com.teksystems.app.model.WishList;
+import com.teksystems.app.service.ProductService;
 import com.teksystems.app.service.WishListService;
 
 import java.util.List;
@@ -51,13 +53,13 @@ public class CustomOrderArrayAdapter  extends ArrayAdapter{
                 holder = (ViewHolder)convertView.getTag();
             }
             Order in = (Order) aController.getOrder(position);
-            String productName = "Product";
-            for(Product product :aController.getProducts()) {
-                /*if(product.getProductId().equals(in.getProductId())) {
-                    productName = product.getProductName();
-                }*/
+            String productNamestr = "Product";
+            for(ProductName productName : ProductName.values()){
+                if(productName.getKey()==in.getProductId().intValue()){
+                    productNamestr = productName.getValue();
+                }
             }
-            holder.tv.setText(in==null?"P1":in.getProductId().toString()/*productName*/);
+            holder.tv.setText(in==null?"P1":productNamestr);
             holder.tvSec.setText(in==null?"1":String.valueOf(in.getQuantity()));
             return convertView;
 

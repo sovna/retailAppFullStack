@@ -108,6 +108,23 @@
         android:textColorHint="#f7f5f5"
         android:backgroundTint="#f7f5f5"/>
 
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="227dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/register"
+        android:layout_alignLeft="@+id/address"
+        android:layout_alignStart="@+id/address"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#f7f5f5"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="text"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="#f7f5f5"
+        android:textColorHint="#f7f5f5" />
+
+
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"

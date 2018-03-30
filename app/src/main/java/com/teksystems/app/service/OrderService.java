@@ -32,7 +32,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class OrderService {
 
-    public void getOrders(final Context context, final String userId) {
+    public void fetchOrders(final Context context, final String userId) {
         StringEntity jsonEntity = null;
         AsyncHttpClient client = new AsyncHttpClient();
         Header header;
@@ -60,13 +60,9 @@ public class OrderService {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
                 System.out.println("success");
-                final Controller aController = (Controller) context.getApplicationContext();
-
-                try {
-                    aController.setOrders(Arrays.asList(new ObjectMapper().readValue(response.toString(), Order[].class)));
-                } catch (Exception e){
-                    e.printStackTrace();
-                    }
+                Intent intent = new Intent(context, OrderActivity.class);
+                intent.putExtra("orders", response.toString());
+                context.startActivity(intent);
 
             }
 

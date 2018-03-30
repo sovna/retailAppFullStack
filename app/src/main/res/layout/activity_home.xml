@@ -10,28 +10,6 @@
     android:background="@drawable/navigation_header_image"
     tools:context="com.teksystems.app.tekkart.LoginActivity">
 
-    <Button
-        android:id="@+id/fetch_address_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/location_address_view"
-        android:layout_alignBottom="@+id/location_address_view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#ebf90f0f"
-        android:onClick="fetchAddressButtonHandler"
-        android:text="LOCATE ME"
-       android:shadowColor= "#ebf5f1f1"/>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_toEndOf="@+id/fetch_address_button"
-        android:layout_toRightOf="@+id/fetch_address_button" />
 
     <ImageButton
         android:id="@+id/user_profile_photo"
@@ -62,7 +40,7 @@
         android:layout_height="98dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/fetch_address_button"
+        android:layout_below="@+id/city"
         android:layout_marginTop="21dp"
         android:adjustViewBounds="false"
         android:contentDescription="BEVERAGES"

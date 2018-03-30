@@ -9,8 +9,11 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.teksystems.app.model.Order;
 import com.teksystems.app.model.WishList;
+import com.teksystems.app.tekkart.CartActivity;
 import com.teksystems.app.tekkart.Controller;
+import com.teksystems.app.tekkart.HomeActivity;
 import com.teksystems.app.tekkart.OrderActivity;
+import com.teksystems.app.tekkart.WishListActivity;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
@@ -36,29 +39,59 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class WishListService {
 
-    public String addToWishList(WishList wishList) {
+    public void addToWishList(final Context context,final WishList wishList) { StringEntity jsonEntity = null;
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        Header header;
+        client.addHeader("Accept", "application/json");
+
+        client.addHeader("Content-Type", "application/json");
+
+        client.addHeader("api-key","xxTEKyy");
+        JSONObject jsonParams = new JSONObject();
         try {
-            Connection con = new ConnectionClass().getConnections();
-            String sql = "INSERT INTO FSTACK.WISHLISTS VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement prest = con.prepareStatement(sql);
-            prest.setInt(1,wishList.getWishListId());
-            prest.setInt(2,wishList.getUserId());
-            prest.setInt(3,wishList.getProductId());
-            prest.setInt(4,wishList.getProductCategoryId());
-            prest.setInt(5,wishList.getManufacturerId());
-            prest.setInt(6,wishList.getLocationId());
-            prest.setDate(7,new java.sql.Date((new Date()).getTime()));
-            prest.setDate(8,new java.sql.Date((new Date()).getTime()));
-            ResultSet rs = prest.executeQuery();
-            prest.close();
-            con.close();
-        } catch (SQLException e){
-            return "Bad Request";
+            jsonParams.put("userId", wishList.getUserId());
+            jsonParams.put("productId",wishList.getProductId());
+            jsonParams.put("productCategoryId", wishList.getProductCategoryId());
+            jsonParams.put("manufacturerId",wishList.getManufacturerId());
+            jsonParams.put("locationId", wishList.getLocationId());
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return "Success";
-}
+        try {
+            jsonEntity = new StringEntity(jsonParams.toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+        client.post(context, "http://ec2-52-14-221-80.us-east-2.compute.amazonaws.com:8080/TekShopping/TekShop/createWishlist", jsonEntity, "application/json", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                System.out.println("success");
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                System.out.println("failure");
+
+                CharSequence text = "Product is in your wishlist already";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.setGravity(Gravity.TOP, -0, 230);
+                toast.show();
+//                intent.putExtra(EXTRA_MESSAGE, text);
+                //startActivity(intent);
+            }
+        });
+
+    }
 
     public void getWishList(final Context context, final String userId) {
+
         StringEntity jsonEntity = null;
         AsyncHttpClient client = new AsyncHttpClient();
         Header header;
@@ -86,14 +119,14 @@ public class WishListService {
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         super.onSuccess(statusCode, headers, response);
                         System.out.println("success");
+                        Intent intent = new Intent(context, WishListActivity.class);
                         final Controller aController = (Controller) context.getApplicationContext();
-
                         try {
                             aController.setWishLists(Arrays.asList(new ObjectMapper().readValue(response.toString(), WishList[].class)));
                         } catch (Exception e){
                             e.printStackTrace();
                         }
-
+                        context.startActivity(intent);
                     }
 
                     @Override
