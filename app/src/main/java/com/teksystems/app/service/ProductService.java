@@ -71,9 +71,7 @@ public class ProductService {
                 Intent intent = new Intent(context, ProductActivity.class);
                 aController.setProductCategory(Category.valueOf(category).getKey());
                 List<Product> productCategoryList = getObjectFromString(response.toString());
-                for(Product productCategoryWise : productCategoryList) {
-                    aController.getProductCategoryList().add(productCategoryWise);
-                }
+                aController.setProductCategoryList(productCategoryList);
                 context.startActivity(intent);
             }
 

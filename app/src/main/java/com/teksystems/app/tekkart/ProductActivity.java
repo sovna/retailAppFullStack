@@ -44,29 +44,13 @@ public class ProductActivity extends AppCompatActivity {
 
 
     public void goToCart(View view){
-        String userId =getIntent().getStringExtra("userId");
-        try {
-            boolean b=userId.isEmpty();
+        final Controller aController = (Controller) ProductActivity.this.getApplicationContext();
+        transaction.setProductCartList(aController.getCart());
+        transaction.setUserId(Integer.valueOf(aController.getUserId()));
 
-        }
-        catch (Exception e)
-        {
-            String exc = e.toString();
-            exc=exc+"";
-
-        }
-
-        if (userId.length()==0) {
-            Toast.makeText(ProductActivity.this, "Please Login to View Cart", Toast.LENGTH_LONG).show();
-        }else {
-            final Controller aController = (Controller) ProductActivity.this.getApplicationContext();
-            transaction.setProductCartList(aController.getCart());
-            transaction.setUserId(Integer.valueOf(userId));
-
-            Intent intent = new Intent(ProductActivity.this, CartActivity.class);
-            intent.putExtra("cart", transaction);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(ProductActivity.this, CartActivity.class);
+        intent.putExtra("cart",transaction);
+        startActivity(intent);
     }
 
 }
