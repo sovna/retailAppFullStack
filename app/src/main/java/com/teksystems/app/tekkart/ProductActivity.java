@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.teksystems.app.model.Category;
 import com.teksystems.app.model.Product;
@@ -42,14 +43,30 @@ public class ProductActivity extends AppCompatActivity {
     }
 
 
- public void goToCart(View view){
-     final Controller aController = (Controller) ProductActivity.this.getApplicationContext();
-     transaction.setProductCartList(aController.getCart());
-     transaction.setUserId(Integer.valueOf(getIntent().getStringExtra("userId")));
+    public void goToCart(View view){
+        String userId =getIntent().getStringExtra("userId");
+        try {
+            boolean b=userId.isEmpty();
 
-     Intent intent = new Intent(ProductActivity.this, CartActivity.class);
-     intent.putExtra("cart",transaction);
-     startActivity(intent);
- }
+        }
+        catch (Exception e)
+        {
+            String exc = e.toString();
+            exc=exc+"";
+
+        }
+
+        if (userId.length()==0) {
+            Toast.makeText(ProductActivity.this, "Please Login to View Cart", Toast.LENGTH_LONG).show();
+        }else {
+            final Controller aController = (Controller) ProductActivity.this.getApplicationContext();
+            transaction.setProductCartList(aController.getCart());
+            transaction.setUserId(Integer.valueOf(userId));
+
+            Intent intent = new Intent(ProductActivity.this, CartActivity.class);
+            intent.putExtra("cart", transaction);
+            startActivity(intent);
+        }
+    }
 
 }

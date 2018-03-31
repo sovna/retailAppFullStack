@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#F5F5F5</color>
+    <color name="colorUIPrimary">#FFC107</color>
+    <color name="colorUIPrimaryDark">#FFA000</color>
+    <color name="UIlightgray">#ededed</color>
+    <color name="UIdeeppurple">#7c4dff</color>
+    <color name="UIyello">#ffb300</color>
+    <color name="UIgreen">#00bfa5</color>
+    <color name="UIdarkblue">#23283a</color>
+    <color name="UItestcolorblue">#152b38</color>
+
 </resources>

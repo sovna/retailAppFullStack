@@ -1,304 +1,539 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/navigation_header_image"
-    tools:context="com.teksystems.app.tekkart.LoginActivity">
+    android:background="#fcfcfc">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:contentScrim="?attr/colorPrimary"
+            app:title="App Title"
+            app:expandedTitleMarginStart="4dp"
+            app:expandedTitleMarginEnd="6dp"
+            android:background="@drawable/navigation_header_image">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/user_profile_photo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_above="@+id/household_needs"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="8dp"
-        android:background="#00000000"
-        android:elevation="5dp"
-        android:onClick="fetchProfile"
-        android:padding="20dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile" />
+                <ImageView
+                    android:id="@+id/userProfile"
+                    android:layout_width="100dp"
+                    android:layout_height="99dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circlebackgroundpurple"
+                    android:onClick="fetchProfile"
+                    android:src="@drawable/ic_person_outline_black_24dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/userName"
+                    android:text="UserName"
+                    android:textStyle="bold"
+                    android:textColor="#FF69B4"
+                    android:textSize="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="sans-serif-smallcaps"/>
+                <TextView
+                    android:id="@+id/location_address_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true" />
+            </LinearLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-    <TextView
-        android:id="@+id/location_address_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+    </android.support.design.widget.AppBarLayout>
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:id="@+id/appBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar">-->
+    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+    <!--android:id="@+id/collapinsgToolBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:layout_scrollFlags="exitUntilCollapsed|scroll"-->
+    <!--app:contentScrim="?attr/colorPrimary"-->
+    <!--app:title="App Title"-->
+    <!--app:expandedTitleMarginStart="48dp"-->
+    <!--app:expandedTitleMarginEnd="64dp"-->
+    <!--android:background="@drawable/navigation_header_image">-->
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--app:layout_collapseMode="pin"/>-->
+    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+    <android.support.v4.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:id="@+id/ll">
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/BEVERAGES"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/beverages"
-        android:layout_width="109dp"
-        android:layout_height="98dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/city"
-        android:layout_marginTop="21dp"
-        android:adjustViewBounds="false"
-        android:contentDescription="BEVERAGES"
-        android:background="#00000000"
-        android:onClick="fetchProduct"
-        android:cropToPadding="false"
-        android:src="@drawable/beverages" />
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/beverages"
+                            android:padding="10dp"
+                            android:contentDescription="Beverages" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Beverages"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text=""
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"/>
 
-    <TextView
-        android:id="@+id/textbeverages"
-        android:labelFor="@id/beverages"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTextbrandedfood"
-        android:layout_alignRight="@+id/editTextbrandedfood"
-        android:layout_below="@+id/beverages"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="beverages"
-        android:textColor="#ebf5f1f1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/BREAKFASTANDDIARY">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/dairy"
+                            android:padding="10dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Dairy Products"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-    <ImageView
-        android:id="@+id/branded_food"
-        android:contentDescription="BRANDEDFOOD"
-        android:layout_width="90dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/beverages"
-        android:onClick="fetchProduct"
-        android:layout_marginTop="29dp"
-        android:background="#00000000"
-        android:src="@drawable/branded_food" />
+            </LinearLayout>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/HOUSEHOLDNEEDS">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/household"
+                            android:padding="10dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Household Products"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/BRANDEDFOOD">
 
-    <TextView
-        android:id="@+id/editTextbrandedfood"
-        android:labelFor="@id/branded_food"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/branded_food"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="branded food"
-        android:textColor="#ebf5f1f1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/baby_and_kids"
-        android:contentDescription="BABYANDKIDS"
-        android:onClick="fetchProduct"
-        android:layout_width="80dp"
-        android:layout_height="89dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/branded_food"
-        android:layout_marginTop="45dp"
-        android:background="#00000000"
-        android:src="@drawable/baby_and_kids" />
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:padding="10dp"
+                            android:src="@drawable/conflakes" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="1dp"
+                            android:background="@color/UIlightgray"
+                            android:alpha="0.25"/>
 
-    <TextView
-        android:id="@+id/editText4babyandkids"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/fruits_and_vegetables"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="baby and kids"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="#ebf5f1f1" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Breakfast Items"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-    <ImageView
-        android:id="@+id/breakfast_and_diary"
-        android:contentDescription="BREAKFASTANDDIARY"
-        android:onClick="fetchProduct"
-        android:layout_width="100dp"
-        android:layout_height="98dp"
-        android:layout_above="@+id/branded_food"
-        android:layout_centerHorizontal="true"
-        android:background="#00000000"
-        android:src="@drawable/breakfast_and_diary" />
+            </LinearLayout>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/FOODGRAINSOILANDMASALA">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/grocery"
+                            android:padding="10dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Grocery Products"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/NOODLESSAUCESANDINSTANTFOOD">
 
-    <TextView
-        android:id="@+id/editTextbreakfastanddairy"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editTexthouseholdneeds"
-        android:layout_alignBottom="@+id/editTexthouseholdneeds"
-        android:layout_alignLeft="@+id/breakfast_and_diary"
-        android:layout_alignStart="@+id/breakfast_and_diary"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="breakfast/diary"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="#ebf5f1f1" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:padding="10dp"
+                            android:src="@drawable/noodles" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="1dp"
+                            android:background="@color/UIlightgray"
+                            android:alpha="0.25"/>
 
-    <ImageView
-        android:id="@+id/foodgrains_oil_and_masala"
-        android:contentDescription="FOODGRAINSOILANDMASALA"
-        android:onClick="fetchProduct"
-        android:layout_width="90dp"
-        android:layout_height="100dp"
-        android:layout_above="@+id/editTextfoodgrainoil"
-        android:layout_alignLeft="@+id/editTextbreakfastanddairy"
-        android:layout_alignStart="@+id/editTextbreakfastanddairy"
-        android:background="#00000000"
-        android:src="@drawable/foodgrains_oil_and_masala" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Instatnt Noodle"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/BABYANDKIDS">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/baby"
+                            android:padding="10dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Baby Products"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
 
-    <TextView
-        android:id="@+id/editTextfoodgrainoil"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/foodgrains_oil_and_masala"
-        android:layout_alignRight="@+id/foodgrains_oil_and_masala"
-        android:layout_below="@+id/branded_food"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="Grain Oil Masala"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Check your analytics"
+                            android:padding="5dp"
+                            android:textColor="@android:color/darker_gray"
+                            android:fontFamily="sans-serif-smallcaps"/>
 
-    <ImageView
-        android:id="@+id/fruits_and_vegetables"
-        android:contentDescription="FRUITSANDVEGETABLES"
-        android:onClick="fetchProduct"
-        android:layout_width="110dp"
-        android:layout_height="91dp"
-        android:layout_alignLeft="@+id/editTextfoodgrainoil"
-        android:layout_alignStart="@+id/editTextfoodgrainoil"
-        android:layout_alignTop="@+id/baby_and_kids"
-        android:background="#00000000"
-        android:src="@drawable/fruits_and_vegetables" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/FRUITSANDVEGETABLES">
 
-    <TextView
-        android:id="@+id/editTextfruitsVeg"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editTextpetcare"
-        android:layout_alignBottom="@+id/editTextpetcare"
-        android:layout_alignLeft="@+id/fruits_and_vegetables"
-        android:layout_alignStart="@+id/fruits_and_vegetables"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="Fruits and Vegetables"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:padding="10dp"
+                            android:src="@drawable/fruitsandveges" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="1dp"
+                            android:background="@color/UIlightgray"
+                            android:alpha="0.25"/>
 
-    <ImageView
-        android:id="@+id/household_needs"
-        android:contentDescription="HOUSEHOLDNEEDS"
-        android:onClick="fetchProduct"
-        android:layout_width="117dp"
-        android:layout_height="99dp"
-        android:layout_alignTop="@+id/breakfast_and_diary"
-        android:layout_toEndOf="@+id/editTextfruitsVeg"
-        android:layout_toRightOf="@+id/editTextfruitsVeg"
-        android:background="#00000000"
-        android:src="@drawable/household_needs" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Fruits and Vegetables"
+                            android:textStyle="bold"
+                            android:textColor="#000000"/>
 
-    <TextView
-        android:id="@+id/editTexthouseholdneeds"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/household_needs"
-        android:layout_alignStart="@+id/household_needs"
-        android:layout_below="@+id/household_needs"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="household needs"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-    <ImageView
-        android:id="@+id/noodles_sauces_and_instant_food"
-        android:contentDescription="NOODLESSAUCESANDINSTANTFOOD"
-        android:onClick="fetchProduct"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
-        android:layout_above="@+id/editTextfoodgrainoil"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="7dp"
-        android:background="#00000000"
-        android:src="@drawable/noodles_sauces_and_instant_food" />
+            </LinearLayout>
+            <LinearLayout
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/PETCARE">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:src="@drawable/pet"
+                            android:padding="10dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/UIlightgray"
+                            android:layout_margin="1dp"
+                            android:alpha="0.25"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="1dp"
+                            android:text="Pet care Products"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="190dp"
+                    android:layout_margin="10dp"
+                    android:onClick="fetchProduct"
+                    android:id="@+id/PERSONALCARE">
 
-    <TextView
-        android:id="@+id/editTextinstantfood"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editTextfoodgrainoil"
-        android:layout_alignBottom="@+id/editTextfoodgrainoil"
-        android:layout_alignLeft="@+id/noodles_sauces_and_instant_food"
-        android:layout_alignStart="@+id/noodles_sauces_and_instant_food"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="instant food"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/pet_care"
-        android:contentDescription="PETCARE"
-        android:onClick="fetchProduct"
-        android:layout_width="112dp"
-        android:layout_height="97dp"
-        android:layout_alignTop="@+id/fruits_and_vegetables"
-        android:layout_toEndOf="@+id/editTextfruitsVeg"
-        android:layout_toRightOf="@+id/editTextfruitsVeg"
-        android:background="#00000000"
-        android:src="@drawable/pet_care" />
+                        <ImageView
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:padding="10dp"
+                            android:src="@drawable/beauty" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="1dp"
+                            android:background="@color/UIlightgray"
+                            android:alpha="0.25"/>
 
-    <TextView
-        android:id="@+id/editTextpetcare"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:text="Beauty care Products"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:fontFamily="sans-serif-smallcaps"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTexthouseholdneeds"
-        android:layout_alignRight="@+id/editTexthouseholdneeds"
-        android:layout_below="@+id/baby_and_kids"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="pet care"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-    <ImageView
-        android:id="@+id/personal_care"
-        android:contentDescription="PERSONALCARE"
-        android:onClick="fetchProduct"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignEnd="@+id/baby_and_kids"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/baby_and_kids"
-        android:background="#00000000"
-        android:src="@drawable/personal_care" />
-
-    <TextView
-        android:id="@+id/editTextpersonalcare"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="27dp"
-        android:layout_toEndOf="@+id/branded_food"
-        android:layout_toRightOf="@+id/branded_food"
-        android:ems="10"
-        android:textColor="#ebf5f1f1"
-        android:inputType="textPersonName"
-        android:text="personal care"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-
-</RelativeLayout>
-
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/shopping_cart_"
+        android:elevation="16dp"
+        android:paddingTop="12dp"
+        android:onClick="showCart()"/>
+</android.support.design.widget.CoordinatorLayout>

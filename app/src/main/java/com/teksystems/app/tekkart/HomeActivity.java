@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teksystems.app.model.City;
+import com.teksystems.app.model.Transaction;
 import com.teksystems.app.service.ProductService;
 
 
@@ -40,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Provides access to the Fused Location Provider API.
      */
-   // private FusedLocationProviderClient mFusedLocationClient;
+    // private FusedLocationProviderClient mFusedLocationClient;
 
     /**
      * Represents a geographical location.
@@ -88,6 +89,9 @@ public class HomeActivity extends AppCompatActivity {
         mAddressRequested = false;
         mAddressOutput = "";
         updateValuesFromBundle(savedInstanceState);
+        String user = getIntent().getStringExtra("username");
+        TextView textView = (TextView) findViewById(R.id.userName);
+        textView.setText(user);
 
         //mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -167,26 +171,59 @@ public class HomeActivity extends AppCompatActivity {
                 Log.i(TAG, "User interaction was cancelled.");
             } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted.
-               // getAddress();
+                // getAddress();
             } }
 
     }
 
-   public void fetchProfile(View view){
-       ImageButton Profile = (ImageButton) view;
+    public void fetchProfile(View view){
+        ImageView Profile = (ImageView) view;
 
-       Intent intent = new Intent(this, ViewProfileActivity.class);
-       EditText editText = (EditText) findViewById(R.id.username);
-       startActivity(intent);
+        Intent intent = new Intent(this, ViewProfileActivity.class);
+        TextView textView = findViewById(R.id.userName);
+        startActivity(intent);
     }
 
     public void fetchProduct(View view){
-        ImageView productCategory = (ImageView) view;
+        String category;
+        if (R.id.BEVERAGES==view.getId())
+        {
+            category="BEVERAGES";
+        }else if (R.id.BREAKFASTANDDIARY==view.getId())
+        {
+            category="BREAKFASTANDDIARY";
+        }else if (R.id.HOUSEHOLDNEEDS==view.getId())
+        {
+            category="HOUSEHOLDNEEDS";
+        }else if (R.id.BRANDEDFOOD==view.getId())
+        {
+            category="BRANDEDFOOD";
+        }else if (R.id.FOODGRAINSOILANDMASALA==view.getId())
+        {
+            category="FOODGRAINSOILANDMASALA";
+        }else if (R.id.NOODLESSAUCESANDINSTANTFOOD==view.getId())
+        {
+            category="NOODLESSAUCESANDINSTANTFOOD";
+        }else if (R.id.BABYANDKIDS==view.getId())
+        {
+            category="BABYANDKIDS";
+        }else if (R.id.FRUITSANDVEGETABLES==view.getId())
+        {
+            category="FRUITSANDVEGETABLES";
+        }else if (R.id.PETCARE==view.getId())
+        {
+            category="PETCARE";
+        }else if (R.id.PERSONALCARE==view.getId())
+        {
+            category="PERSONALCARE";
+        }else {
+            category="DEFAULT";
+        }
 
         //Intent intent = new Intent(this, ProductActivity.class);
-        String category = view.getContentDescription().toString();
+
         //String category = productCategory.getText().toString();
-        System.out.print(category+" "+productCategory.toString());
+        //System.out.print(category+" "+productCategory.toString());
         final Controller aController = (Controller) HomeActivity.this.getApplicationContext();
         new ProductService().getproducts(HomeActivity.this,aController.getCustomer().getCityId(),category,aController.getUserId());
         //startActivity(intent);

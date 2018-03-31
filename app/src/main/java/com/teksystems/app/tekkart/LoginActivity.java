@@ -9,8 +9,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.teksystems.app.service.CustomerService;
@@ -24,6 +27,11 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class LoginActivity extends AppCompatActivity {
+    RadioGroup group;
+    RadioButton login;
+    ExpandableRelativeLayout form, form2;
+    EditText userName,email, password, fullName, confirmPassword, phoneNumber;
+
 
 
 
@@ -31,6 +39,34 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        group =findViewById(R.id.radiogroup);
+        form  =findViewById(R.id.loginForm);
+        form2 =findViewById(R.id.registerForm);
+        form2.collapse();
+
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton button1 = (RadioButton) findViewById(R.id.Login);
+                RadioButton button2 = findViewById(R.id.Register);
+
+                if (i==R.id.Login) {
+                    form.expand();
+                    form2.collapse();
+                    button2.setBackgroundResource(R.drawable.signup_bg);
+                    button1.setBackgroundResource(R.drawable.checked_bg);
+
+                }else {
+                    form2.expand();
+                    form.collapse();
+                    button1.setBackgroundResource(R.drawable.signup_bg);
+                    button2.setBackgroundResource(R.drawable.checked_bg);
+
+                }
+
+
+            }
+        });
     }
 
     public void buttonOnClick(View v) {
@@ -65,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                 super.onSuccess(statusCode, headers, response);
 
                 System.out.println("success");
-                Intent intent = new Intent(context, HomeActivity.class);
+
 
                 String message = username.getText().toString();
                 try {
@@ -74,10 +110,14 @@ public class LoginActivity extends AppCompatActivity {
                     if(aController.getUserId() != null && aController.getCustomer().getUserId() == null) {
                         new CustomerService().getCustomers(LoginActivity.this, aController.getUserId());
                     }
+
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
-                    startActivity(intent);
+                Intent intent = new Intent(context, HomeActivity.class);
+                intent.putExtra("username",message);
+                startActivity(intent);
+
 
             }
 
